@@ -70,7 +70,7 @@ class Convert():
     def make_csv(self):  # type: () -> None
         """ Make CSV """
         for event in self.cal.subcomponents:
-            if event.name != 'VEVENT':
+            if (event.name != 'VEVENT') or (event.get('DTEND') is None):
                 continue
             row = [
                 event.get('SUMMARY'),
